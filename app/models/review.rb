@@ -6,10 +6,10 @@ class Review < ActiveRecord::Base
     def compute_review_weight
         ratings = self.user_ratings.select(:rating_score)
         if ratings.length > 0
-            sum_of_ratings = ratings.reduce(0) do |sum, rating|
-                sum + rating.rating_score
-            end
-            new_weight = sum_of_ratings / ratings.length
+            average_rating = (ratings.reduce(0) {|sum, rating|
+                sum + rating.rating_score}) / ratings.length
+
+            new_weight = average_rating * (Math.log(ratings.length) + 1)
             self.update(weight: new_weight)
         end
     end

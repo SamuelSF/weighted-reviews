@@ -14,10 +14,10 @@ class User < ActiveRecord::Base
         if reviews.length > 0
             average_review_weight = (reviews.reduce(0){|sum, review|
                 sum + review.weight
-                } / reviews.length)
+                }) / reviews.length
 
             new_weight = average_review_weight * (Math.log(reviews.length) + 1)
+            self.update(weight: new_weight)
         end
-        self.update(weight: new_weight)
     end
 end
