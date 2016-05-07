@@ -5,3 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+#
+Sam = User.create(username: "Sam", email: "Sam@host.com",
+    password: "swordfish", password_confirmation: "swordfish")
+
+Bob = User.create(username: "Bob", email: "Bob@host.com",
+    password: "swordfish", password_confirmation: "swordfish")
+
+Kristen = User.create(username: "Kristen", email: "Kristen@host.com",
+    password: "swordfish", password_confirmation: "swordfish")
+
+dark_souls = Product.create(title: "Dark Souls", description: "Prepare to Cry")
+
+mario_galaxy2 = Product.create(title: "Super Mario Galaxy 2", description: "Best Wii Game",)
+
+

@@ -13,4 +13,11 @@ class Review < ActiveRecord::Base
             self.update(weight: new_weight)
         end
     end
+
+    def new_review_sequence
+        self.user.compute_user_weight
+        self.user.products.each do |product|
+            product.compute_product_score
+        end
+    end
 end

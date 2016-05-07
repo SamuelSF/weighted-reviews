@@ -12,7 +12,7 @@ class Product < ActiveRecord::Base
                 sum + (review.review_score * user_weight)
             end
             new_product_score = review_sum / sum_of_user_weights
-            self.update(:product_score new_product_score)
+            self.update(product_score: new_product_score)
         end
     end
 end
