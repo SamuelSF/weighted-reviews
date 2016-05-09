@@ -1,0 +1,13 @@
+<h3><%= @product.title %></h3>
+<p><%= @product.description %></p>
+
+
+<a href="/products/<%= @product.id %>/reviews/new">
+    Write a Review!
+</a>
+
+<ul>
+<% @reviews.each do %>
+    <li><%= @review.title %></li>
+<% end %>
+</ul>

@@ -1,0 +1,10 @@
+<ul>
+    <% @products.each do |product| %>
+        <li>
+            <a href="/products/<%= product.id %>"><%= product.title %></a>
+            <% if product.product_score%>
+                <%= product.product_score %>
+            <% end %>
+        </li>
+    <% end %>
+</ul>
