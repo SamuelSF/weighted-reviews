@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/products/:product_id/reviews/new', to: 'reviews#new'
 
+  post '/products/:product_id/reviews/', to: 'reviews#create'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

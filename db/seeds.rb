@@ -7,17 +7,25 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #
-Sam = User.create(username: "Sam", email: "Sam@host.com",
+sam = User.create(username: "Sam", email: "Sam@host.com",
     password: "swordfish", password_confirmation: "swordfish")
 
-Bob = User.create(username: "Bob", email: "Bob@host.com",
+bob = User.create(username: "Bob", email: "Bob@host.com",
     password: "swordfish", password_confirmation: "swordfish")
 
-Kristen = User.create(username: "Kristen", email: "Kristen@host.com",
+kristen = User.create(username: "Kristen", email: "Kristen@host.com",
     password: "swordfish", password_confirmation: "swordfish")
 
-dark_souls = Product.create(title: "Dark Souls", description: "Prepare to Cry")
+dark_souls = Product.create(title: "Dark Souls",
+    description: "Prepare to Cry")
 
-mario_galaxy2 = Product.create(title: "Super Mario Galaxy 2", description: "Best Wii Game",)
+mario_galaxy2 = Product.create(title: "Super Mario Galaxy 2",
+    description: "Best Wii Game",)
 
 
+kristen_review_dark_souls = dark_souls.reviews.new(title: "So good.",
+    body:"Made me cry, but I loved it!", review_score: 10)
+
+kristen_review_dark_souls.user = kristen
+
+kristen_review_dark_souls.save

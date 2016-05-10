@@ -15,8 +15,10 @@ class Review < ActiveRecord::Base
     end
 
     def new_review_sequence
+        puts self.user.email
         self.user.compute_user_weight
         self.user.products.each do |product|
+            puts product.title
             product.compute_product_score
         end
     end

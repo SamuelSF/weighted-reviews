@@ -7,7 +7,7 @@
 </a>
 
 <ul>
-<% @reviews.each do %>
-    <li><%= @review.title %></li>
+<% @reviews.each do |review| %>
+    <li><%= review.title %> - <%= review.review_score%> by <%= review.user.email %></li>
 <% end %>
 </ul>
