@@ -1,0 +1,15 @@
+<h3>Rate review of <%= @review.product.title%> by <%= @review.user.email%></h3>
+
+<form action="/reviews/<%= @review.id %>/user_ratings" method="post">
+    <label for="user_rating_body">Comment</label>
+    <textarea name="user_rating[body]" id="user_rating_score">Your Thoughts</textarea>
+    <br>
+    <label for="user_rating_score">Rate the Review</label>
+        <select name="user_rating[rating_score]" id="user_rating_score">
+            <% (1..10).each do |num| %>
+                <option value ="<%= num %>"><%= num %></option>
+            <% end %>
+        </select>
+        <input type="hidden" name="authenticity_token"value="<%= form_authenticity_token %>">
+        <button type="submit">Submit</button>
+</form>
