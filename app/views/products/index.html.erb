@@ -3,7 +3,7 @@
         <li>
             <a href="/products/<%= product.id %>"><%= product.title %></a>
             <% if product.product_score%>
-                <%= product.product_score.to_s %>
+                <%= product.product_score.round(1) %>
             <% end %>
         </li>
     <% end %>

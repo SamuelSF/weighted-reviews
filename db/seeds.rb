@@ -29,3 +29,9 @@ kristen_review_dark_souls = dark_souls.reviews.new(title: "So good.",
 kristen_review_dark_souls.user = kristen
 
 kristen_review_dark_souls.save
+
+sam_rate_kristen_review = kristen_review_dark_souls.user_ratings.new(rating_score: 10)
+
+sam_rate_kristen_review.user = sam
+
+sam_rate_kristen_review.save

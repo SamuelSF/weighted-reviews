@@ -6,8 +6,13 @@
     Write a Review!
 </a>
 
-<ul>
+
 <% @reviews.each do |review| %>
-    <li><%= review.title %> - <%= review.review_score%> by <%= review.user.email %></li>
+    <div>
+        <h4><%= review.title %></h4>
+        <h5> by <%= review.user.email %></h5>
+        <p><%= review.body %></p>
+        <span><strong> <%= review.review_score %> </strong></span>
+        <span><a href="/reviews/<%= review.id %>/user_ratings/new">Rate This Review</a></span>
+    </div>
 <% end %>
-</ul>
