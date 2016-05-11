@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
 
     def compute_user_weight
         reviews = self.reviews.select(:weight)
-        new_weight = 1.0
         if reviews.length > 0
             average_review_weight = (reviews.reduce(0){|sum, review|
                 sum + review.weight
