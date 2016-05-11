@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   post '/products/:product_id/reviews', to: 'reviews#create'
 
+  get '/reviews/:id', to: 'reviews#show'
+
   get '/reviews/:id/user_ratings/new', to: 'user_ratings#new'
 
   post '/reviews/:id/user_ratings', to: 'user_ratings#create'

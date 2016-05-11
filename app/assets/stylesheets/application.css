@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+.outline-element {
+    color: white;
+    background: linear-gradient(#b30000, #ff2616);
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.outline-element a {
+    color: white;
+}
+
+.user-welcome{
+    border-width: 0;
+}

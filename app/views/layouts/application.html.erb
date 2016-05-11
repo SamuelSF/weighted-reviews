@@ -2,16 +2,16 @@
 <html>
 <head>
   <title>You Rate It!</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 </head>
 <body>
 <div class="container">
-    <div class="row top-row">
-        <h1 class="page-header text-center">You Rate It!</h1>
+    <div class="row top-row outline-element">
+        <h1 class="text-center">You Rate It!</h1>
     </div>
 
     <div class="row main-row">
@@ -20,28 +20,20 @@
         </div> <!-- main content column -->
         <div class="col-sm-3 nav-column">
             <% if user_signed_in? %>
-                <p class="text_center">
+                <div class="list-group-item user-welcome">
                     Welcome <%= current_user.username %>
-                </p>
+                </div>
             <% end %>
-            <ul>
+            <div class="list-group">
                 <% unless user_signed_in? %>
-                    <li>
-                        <a href="/users/sign_up/">Register</a>
-                    </li>
-                    <li>
-                        <a href="/users/sign_in/">Log In</a>
-                    </li>
+                    <a href="/users/sign_up/" class="list-group-item">Register</a>
+                    <a href="/users/sign_in/" class="list-group-item">Log In</a>
                 <% else %>
-                    <li><a href="/users/sign_out/" data-method="delete">Log Out</a></li>
+                    <a href="/users/sign_out/" class="list-group-item" data-method="delete">Log Out</a>
                 <% end %>
-                <li>
-                    <a href="/products">Products</a>
-                </li>
-                <li>
-                    <a href="/"> Home </a>
-                </li>
-            </ul>
+                    <a href="/products" class="list-group-item">Products</a>
+                    <a href="/" class="list-group-item"> Home </a>
+            </div>
         </div> <!-- nav-column -->
     </div><!-- main content row -->
 </div> <!-- main container -->

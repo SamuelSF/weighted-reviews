@@ -1,18 +1,15 @@
-<h3><%= @product.title %></h3>
+<h3 class="text-center"><%= @product.title %></h3>
 <p><%= @product.description %></p>
-
 
 <a href="/products/<%= @product.id %>/reviews/new">
     Write a Review!
 </a>
 
 
+<ul class="text-center">
 <% @reviews.each do |review| %>
-    <div>
-        <h4><%= review.title %></h4>
-        <h5> by <%= review.user.email %></h5>
-        <p><%= review.body %></p>
-        <span><strong> <%= review.review_score %> </strong></span>
-        <span><a href="/reviews/<%= review.id %>/user_ratings/new">Rate This Review</a></span>
-    </div>
+    <li>
+        <%= review.title %>
+    </li>
 <% end %>
+</ul>
