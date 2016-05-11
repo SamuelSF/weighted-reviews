@@ -5,6 +5,7 @@ class UserRatingValidator < ActiveModel::Validator
         end
         if user_rating.user_id == user_rating.review.user_id
             user_rating.errors[:user_id] << "You cannot rate your own review! No CSRF for you!"
+        end
     end
 end
 

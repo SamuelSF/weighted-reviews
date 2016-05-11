@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WeightedReviews</title>
+  <title>You Rate It!</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
 </head>
 <body>
+<div class="container">
+    <div class="row top-row">
+        <h1 class="page-header text-center">You Rate It!</h1>
+    </div>
 
-<%= yield %>
-
+    <div class="row main-row">
+        <div class="col-sm-7 col-sm-offset-2">
+            <%= yield %>
+        </div> <!-- main content column -->
+        <div class="col-sm-3 nav-column">
+            <% if user_signed_in? %>
+                <p class="text_center">
+                    Welcome <%= current_user.username %>
+                </p>
+            <% end %>
+            <ul>
+                <% unless user_signed_in? %>
+                    <li>
+                        <a href="/users/sign_up/">Register</a>
+                    </li>
+                    <li>
+                        <a href="/users/sign_in/">Log In</a>
+                    </li>
+                <% else %>
+                    <li><a href="/users/sign_out/" data-method="delete">Log Out</a></li>
+                <% end %>
+                <li>
+                    <a href="/products">Products</a>
+                </li>
+                <li>
+                    <a href="/"> Home </a>
+                </li>
+            </ul>
+        </div> <!-- nav-column -->
+    </div><!-- main content row -->
+</div> <!-- main container -->
 </body>
 </html>
