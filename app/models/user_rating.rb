@@ -1,6 +1,18 @@
+class UserRatingValidator < ActiveModel::Validator
+    def validate(user_rating)
+        unless UserRating.find_by(user_id: user_rating.user_id, review_id: user_rating.review_id) == nil or not user_rating.new_record?
+            user_rating.errors[:user_id] << "You cannot rate a review more than once! No CSRF for you!"
+        end
+        if user_rating.user_id == user_rating.review.user_id
+            user_rating.errors[:user_id] << "You cannot rate your own review! No CSRF for you!"
+    end
+end
+
 class UserRating < ActiveRecord::Base
     belongs_to :user
     belongs_to :review
+    include ActiveModel::Validations
+    validates_with UserRatingValidator
 
     def new_rating_sequence
         self.review.compute_review_weight

@@ -1,7 +1,17 @@
+class ReviewValidator < ActiveModel::Validator
+    def validate(review)
+        unless Review.find_by(user_id: review.user_id, product_id: review.product_id) == nil or not review.new_record?
+            review.errors[:user_id] << "You cannot review a product more than once."
+        end
+    end
+end
+
 class Review < ActiveRecord::Base
     belongs_to :product
     belongs_to :user
     has_many :user_ratings
+    include ActiveModel::Validations
+    validates_with ReviewValidator
 
     def compute_review_weight
         ratings = self.user_ratings.select(:rating_score)
