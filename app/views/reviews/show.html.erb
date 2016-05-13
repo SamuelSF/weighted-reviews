@@ -21,17 +21,19 @@
 
 <h4 class="text-center">User Ratings</h4>
 
-<p>
-    <a href="/reviews/<%= @review.id %>/user_ratings/new">Rate This Review</a>
-</p>
+<% unless user_signed_in? && current_user.id == @review.user_id %>
+    <p>
+        <a href="/reviews/<%= @review.id %>/user_ratings/new">Rate This Review</a>
+    </p>
+<% end %>
 
 <dl>
     <% @review.user_ratings.each do |rating| %>
         <dt><%= rating.user.username %> - <%=rating.rating_score%></dt>
         <dd>
-            <% rating_lines = @rating.body.split("\n") %>
+            <% rating_lines = rating.body.split("\n") %>
             <% rating_lines.each do |line| %>
-                <%= lines %>
+                <%= line %>
                 <br>
             <% end %>
         </dd>
