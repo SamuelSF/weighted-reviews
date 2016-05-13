@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+#needed for Heroku static assets
+gem 'rails_12factor', group: :production
+
 #devise for authentication
 gem 'devise'
 
