@@ -4,7 +4,11 @@
 </h2>
 
 <article class="text-justify">
-    <%= @review.body %>
+    <% review_lines = @review.body.split("\n") %>
+    <% review_lines.each do |line| %>
+        <%= line %>
+        <br>
+    <% end %>
 </article>
 
 <h4> Score: <%= @review.review_score %></h4>
@@ -24,6 +28,12 @@
 <dl>
     <% @review.user_ratings.each do |rating| %>
         <dt><%= rating.user.username %> - <%=rating.rating_score%></dt>
-        <dd><%=rating.body%></dd>
+        <dd>
+            <% rating_lines = @rating.body.split("\n") %>
+            <% rating_lines.each do |line| %>
+                <%= lines %>
+                <br>
+            <% end %>
+        </dd>
     <% end %>
 </dl>
