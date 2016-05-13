@@ -1,4 +1,8 @@
-<h3 class="text-center"><%= @product.title %> - <%=@product.product_score.round(1) %></h3>
+<h3 class="text-center"><%= @product.title %>
+    <% if @product.product_score %>
+        - <%= @product.product_score.round(1) %>
+    <% end %>
+</h3>
 
 <p>
     <img src="http://pugholdit.herokuapp.com/300x300">
@@ -18,7 +22,7 @@
 
 <h3 class= "text-center"> Reviews </h3>
 
-<ul class=>
+<ul class="list-unstyled">
 <% @reviews.each do |review| %>
     <li>
         <a href="/reviews/<%=review.id%>"><%= review.title %></a>

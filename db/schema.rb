@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20160510141011) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.string   "username"
+    t.decimal  "user_rank"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.decimal  "weight",                 default: 5.0
