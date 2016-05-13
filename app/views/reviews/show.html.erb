@@ -1,0 +1,29 @@
+<h3 class="text-center"><%= @review.title%></h3>
+<h4 class="text-center">
+    Review of <%= @review.product.title %> by <%= @review.user.username%>.
+</h2>
+
+<article class="text-justify">
+    <%= @review.body %>
+</article>
+
+<h4> Score: <%= @review.review_score %></h4>
+
+<span>
+    <a href="/products/<%= @review.product_id %>">
+        More <%=@review.product.title%> Reviews
+    </a>
+</span>
+
+<h4 class="text-center">User Ratings</h4>
+
+<p>
+    <a href="/reviews/<%= @review.id %>/user_ratings/new">Rate This Review</a>
+</p>
+
+<dl>
+    <% @review.user_ratings.each do |rating| %>
+        <dt><%= rating.user.username %> - <%=rating.rating_score%></dt>
+        <dd><%=rating.body%></dd>
+    <% end %>
+</dl>

@@ -16,6 +16,11 @@ class ReviewsController < ApplicationController
         redirect_to "/products/#{params[:product_id]}"
     end
 
+    def show
+        @review = Review.find(params[:id])
+        render 'show'
+    end
+
     private
 
     def review_params

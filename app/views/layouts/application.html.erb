@@ -10,9 +10,9 @@
 </head>
 <body>
 <div class="container">
-    <div class="row top-row outline-element">
+    <header class="row top-row outline-element">
         <h1 class="text-center">You Rate It!</h1>
-    </div>
+    </header>
 
     <div class="row main-row">
         <div class="col-sm-7 col-sm-offset-2">
@@ -26,7 +26,7 @@
             <% end %>
             <div class="list-group">
                 <% unless user_signed_in? %>
-                    <a href="/users/sign_up/" class="list-group-item">Register</a>
+                    <a href="/users/sign_up/" class="list-group-item">Sign Up</a>
                     <a href="/users/sign_in/" class="list-group-item">Log In</a>
                 <% else %>
                     <a href="/users/sign_out/" class="list-group-item" data-method="delete">Log Out</a>
@@ -36,6 +36,9 @@
             </div>
         </div> <!-- nav-column -->
     </div><!-- main content row -->
+    <footer class="row outline-element">
+        <adress class="pull-right reach-me">Website by <a href="mailto:SamuelSFrade@gmail.com">Samuel Frade</a></address>
+    </footer>
 </div> <!-- main container -->
 </body>
 </html>

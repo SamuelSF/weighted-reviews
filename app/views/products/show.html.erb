@@ -1,15 +1,28 @@
 <h3 class="text-center"><%= @product.title %></h3>
-<p><%= @product.description %></p>
+
+<p>
+    <img src="http://pugholdit.herokuapp.com/300x300">
+    <%= @product.description %>
+    Fair trade saucer seasonal cup in blue mountain crema. Viennese and latte, beans, decaffeinated extra froth crema filter grounds crema. Redeye trifecta as, foam affogato so, medium seasonal cortado flavour frappuccino. French press arabica, irish that macchiato ut french press sugar coffee aftertaste.
+
+    Extra sit, breve bar seasonal, viennese irish mazagran to go aftertaste single shot. Aftertaste roast, in as cappuccino grinder dark robusta that dripper barista lungo. Fair trade instant, caffeine extraction to go, cultivar that mocha americano chicory. White kopi-luwak spoon acerbic, mazagran cinnamon id dripper robusta.
+
+    Coffee, extra et, aftertaste, id, at, organic carajillo that latte strong. Decaffeinated trifecta grounds milk spoon cinnamon percolator cream. Barista java redeye froth medium espresso barista, caffeine beans sugar seasonal whipped. Doppio acerbic ristretto instant con panna at milk.
+
+    Grounds iced roast beans froth at grounds mocha sugar variety. Instant, bar whipped qui java, aftertaste galão body coffee est pumpkin spice. Turkish lungo viennese black wings flavour crema. To go, kopi-luwak foam, wings white in arabica mazagran con panna strong.
+</p>
 
 <a href="/products/<%= @product.id %>/reviews/new">
-    Write a Review!
+    <h4>Write a Review!</h4>
 </a>
 
+<h3 class= "text-center"> Reviews </h3>
 
-<ul class="text-center">
+<ul class=>
 <% @reviews.each do |review| %>
     <li>
-        <%= review.title %>
+        <a href="/reviews/<%=review.id%>"><%= review.title %></a>
+        by <%= review.user.username%> - Score: <%=review.review_score%>
     </li>
 <% end %>
 </ul>

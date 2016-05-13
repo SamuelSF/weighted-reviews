@@ -1,6 +1,5 @@
 class UserRatingsController < ApplicationController
 
-
     before_action :authenticate_user!, only: ["new", "create"]
 
     # route is POST -> /reviews/:id/user_ratings
@@ -11,9 +10,9 @@ class UserRatingsController < ApplicationController
         if new_user_rating.save
             new_user_rating.new_rating_sequence
         else
-            #bad stuff here
+
         end
-        redirect_to "/products/#{review.product.id}"
+        redirect_to "/reviews/#{review.id}"
     end
 
     def new

@@ -17,14 +17,21 @@
 .outline-element {
     color: white;
     background: linear-gradient(#b30000, #ff2616);
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+
 }
 
 .outline-element a {
-    color: white;
+    color: #83F52C;
 }
 
 .user-welcome{
     border-width: 0;
+}
+
+.reach-me {
+    padding-right: 4px;
 }
