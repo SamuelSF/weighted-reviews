@@ -4,16 +4,9 @@
     <% end %>
 </h3>
 
+<img src="<%= @product. %>">
 <p>
-    <img src="http://pugholdit.herokuapp.com/300x300">
     <%= @product.description %>
-    Fair trade saucer seasonal cup in blue mountain crema. Viennese and latte, beans, decaffeinated extra froth crema filter grounds crema. Redeye trifecta as, foam affogato so, medium seasonal cortado flavour frappuccino. French press arabica, irish that macchiato ut french press sugar coffee aftertaste.
-
-    Extra sit, breve bar seasonal, viennese irish mazagran to go aftertaste single shot. Aftertaste roast, in as cappuccino grinder dark robusta that dripper barista lungo. Fair trade instant, caffeine extraction to go, cultivar that mocha americano chicory. White kopi-luwak spoon acerbic, mazagran cinnamon id dripper robusta.
-
-    Coffee, extra et, aftertaste, id, at, organic carajillo that latte strong. Decaffeinated trifecta grounds milk spoon cinnamon percolator cream. Barista java redeye froth medium espresso barista, caffeine beans sugar seasonal whipped. Doppio acerbic ristretto instant con panna at milk.
-
-    Grounds iced roast beans froth at grounds mocha sugar variety. Instant, bar whipped qui java, aftertaste galão body coffee est pumpkin spice. Turkish lungo viennese black wings flavour crema. To go, kopi-luwak foam, wings white in arabica mazagran con panna strong.
 </p>
 
 <% unless user_signed_in? && @product.users.include?(current_user) %>

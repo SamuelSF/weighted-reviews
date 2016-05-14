@@ -1,7 +1,7 @@
 class SearchesController < ApplicationController
     def main
         if params[:query]
-            @results = Search.new.fetch(params[:query])
+            @products = Search.new.maker(params[:query])
         end
         render 'main'
     end

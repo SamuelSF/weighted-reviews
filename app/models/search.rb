@@ -5,7 +5,7 @@ class Search
         @format = "&format=json"
         @resources = "&resources=game"
         @field_list = "&field_list=name,platforms,original_release_date,image,deck,id"
-        @limit = "&limit=4"
+        @limit = "&limit=20"
     end
 
     def fetch(query)
@@ -21,7 +21,7 @@ class Search
         search["results"].each do |result|
             if Product.find_by(api_id: result["id"])
                 products << Product.find_by(api_id: result["id"])
-            else
+            elsif self.checker(result)
                 products << self.producer(result)
             end
         end
@@ -45,6 +45,31 @@ class Search
         product.thumb_img = result["image"]["thumb_url"]
         product.med_img = result["image"]["medium_url"]
         product.original_release_date = result["original_release_date"]
+        product.save
         product
+    end
+
+    def checker(result)
+        name = false
+        deck = false
+        original_release_date = false
+        platforms = false
+        image = false
+        if result["name"]
+            name = true
+        end
+        if result["deck"]
+            deck = true
+        end
+        if result["original_release_date"]
+            original_release_date = true
+        end
+        if result["platforms"] != nil && result["platforms"].length > 0
+            platforms = true
+        end
+        if result["image"] != nil && result["image"]["thumb_url"] != nil && result["image"]["medium_url"] != nil
+            image = true
+        end
+        (name && deck && original_release_date && platforms && image)
     end
 end
