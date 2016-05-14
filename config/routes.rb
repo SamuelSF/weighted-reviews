@@ -19,8 +19,6 @@ Rails.application.routes.draw do
 
   get '/search', to: 'searches#main'
 
-  get '/search/:query', to: 'searches#results'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

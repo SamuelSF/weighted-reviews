@@ -1,7 +1,11 @@
-<form>
+<form action="/search" method="gets">
     <div class="form-group">
         <label for="search-bar">Game Search</label>
-        <input type="text" class="form-control js-search-bar" placeholder="Title">
+        <input type="text" name="query" class="form-control" id="search-bar" placeholder="Title">
     </div>
-    <button class="btn btn-default js-search-btn">Submit</button>
+    <button class="btn btn-default">Submit</button>
 </form>
+
+<%if @results%>
+    <%= @results %>
+<% end %>
