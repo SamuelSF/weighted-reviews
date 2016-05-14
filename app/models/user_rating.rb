@@ -14,6 +14,8 @@ class UserRating < ActiveRecord::Base
     belongs_to :review
     include ActiveModel::Validations
     validates_with UserRatingValidator
+    validates :body, presence: true
+    validates :rating_score, presence: true
 
     def new_rating_sequence
         self.review.compute_review_weight

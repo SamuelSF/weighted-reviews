@@ -12,6 +12,9 @@ class Review < ActiveRecord::Base
     has_many :user_ratings
     include ActiveModel::Validations
     validates_with ReviewValidator
+    validates :title, presence: true
+    validates :review_score, presence: true
+    validates :body, presence: true
 
     def compute_review_weight
         ratings = self.user_ratings.select(:rating_score)

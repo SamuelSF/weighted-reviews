@@ -16,9 +16,11 @@
     Grounds iced roast beans froth at grounds mocha sugar variety. Instant, bar whipped qui java, aftertaste galão body coffee est pumpkin spice. Turkish lungo viennese black wings flavour crema. To go, kopi-luwak foam, wings white in arabica mazagran con panna strong.
 </p>
 
-<a href="/products/<%= @product.id %>/reviews/new">
-    <h4>Write a Review!</h4>
-</a>
+<% unless user_signed_in? && @product.users.include?(current_user) %>
+    <a href="/products/<%= @product.id %>/reviews/new">
+        <h4>Write a Review!</h4>
+    </a>
+<% end %>
 
 <h3 class= "text-center"> Reviews </h3>
 
