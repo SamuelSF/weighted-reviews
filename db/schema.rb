@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160514160326) do
+ActiveRecord::Schema.define(version: 20160515001430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,13 +20,14 @@ ActiveRecord::Schema.define(version: 20160514160326) do
     t.string   "title"
     t.string   "description"
     t.decimal  "product_score"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.date     "original_release_date"
     t.integer  "api_id"
     t.string   "platforms"
     t.string   "thumb_img"
     t.string   "med_img"
+    t.integer  "review_num",            default: 0
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 20160514160326) do
     t.datetime "updated_at",                 null: false
     t.decimal  "weight",       default: 5.0
     t.string   "title"
+    t.integer  "rating_num",   default: 0
   end
 
   create_table "user_ratings", force: :cascade do |t|
@@ -65,6 +67,7 @@ ActiveRecord::Schema.define(version: 20160514160326) do
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.decimal  "weight",                 default: 5.0
+    t.integer  "review_num",             default: 0
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

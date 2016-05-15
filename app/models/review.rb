@@ -28,11 +28,16 @@ class Review < ActiveRecord::Base
     end
 
     def new_review_sequence
-        puts self.user.email
+        self.user.tally_reviews
+        self.product.tally_reviews
         self.user.compute_user_weight
         self.user.products.each do |product|
             puts product.title
             product.compute_product_score
         end
+    end
+
+    def tally_ratings
+        self.update(rating_num: self.ratings.length)
     end
 end

@@ -16,4 +16,9 @@ class Product < ActiveRecord::Base
             self.update(product_score: new_product_score)
         end
     end
+
+    def tally_reviews
+        num = self.reviews.length
+        self.update(review_num: num)
+    end
 end

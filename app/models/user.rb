@@ -21,4 +21,9 @@ class User < ActiveRecord::Base
             self.update(weight: new_weight)
         end
     end
+
+    def tally_reviews
+      num = self.reviews.length
+      self.update(review_num: num)
+    end
 end
