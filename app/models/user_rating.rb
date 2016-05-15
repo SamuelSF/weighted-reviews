@@ -18,6 +18,7 @@ class UserRating < ActiveRecord::Base
     validates :rating_score, presence: true
 
     def new_rating_sequence
+        self.review.tally_reviews
         self.review.compute_review_weight
         self.review.user.compute_user_weight
         self.review.user.products.each do |product|
