@@ -11,8 +11,8 @@
 <%if @products != nil && @products.length > 0 %>
     <% @products.each do |product| %>
         <div class="row">
-            <img src="<%= product.thumb_img %>">
             <a href="/products/<%=product.id%>">
+                <img src="<%= product.thumb_img %>">
                 <strong><%= product.title %></strong>
             </a>
             <p><%= product.description %></p>
