@@ -18,11 +18,13 @@ class Search
     def maker(query)
         products = []
         search = self.fetch(query)
-        search["results"].each do |result|
-            if Product.find_by(api_id: result["id"])
-                products << Product.find_by(api_id: result["id"])
-            elsif self.checker(result)
-                products << self.producer(result)
+        if search["results"] != nil
+            search["results"].each do |result|
+                if Product.find_by(api_id: result["id"])
+                    products << Product.find_by(api_id: result["id"])
+                elsif self.checker(result)
+                    products << self.producer(result)
+                end
             end
         end
         products
