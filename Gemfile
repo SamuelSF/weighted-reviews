@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+#generate random content for my database
+gem 'faker'
+
 #needed for Heroku static assets
 gem 'rails_12factor', group: :production
 
