@@ -1,3 +1,4 @@
 == README
 
 This is my final project for the March 2016 Iron Hack cohort.  This document will grow with the project.
+This project is for a website that allows for users to review products and for those reviews to be rated by users.  User ratings are then used to calculate weights for the autors of reviews.  These weights then determine how much impact an author has on a given products end score.
