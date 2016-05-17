@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   post '/reviews/:id', to: 'reviews#update'
 
+  delete '/reviews/:id', to: 'reviews#delete'
+
   get '/reviews/:review_id/user_ratings/new', to: 'user_ratings#new'
 
   post '/reviews/:review_id/user_ratings', to: 'user_ratings#create'

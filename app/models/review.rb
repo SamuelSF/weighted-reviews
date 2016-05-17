@@ -48,7 +48,6 @@ class Review < ActiveRecord::Base
         user_ratings = self.user_ratings
         user_ratings.destroy_all
         self.destroy
-        puts "I done dit it now!"
         reviewed_product = Product.find(reviewed_product.id)
         reviewer = User.find(reviewer.id)
         reviewer.tally_reviews
