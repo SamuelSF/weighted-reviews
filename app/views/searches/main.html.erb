@@ -15,11 +15,21 @@
 <%if @products != nil && @products.length > 0 %>
     <% @products.each do |product| %>
         <div class="row">
-            <a href="/products/<%=product.id%>">
-                <img src="<%= product.thumb_img %>">
-                <strong><%= product.title %></strong>
-            </a>
-            <p><%= product.description %></p>
+            <div class="col-sm-12">
+                <a href="/products/<%= product.id %>">
+                    <h4 class="text-center"><%= product.title %></h5>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <a href="/products/<%= product.id %>">
+                    <img src="<%= product.med_img %>" class="img-responsive center-block">
+                </a>
+            </div>
+            <div class="col-sm-8">
+                <p class="text-justify"><%= product.description%></p>
+            </div>
         </div>
     <% end %>
 <% elsif @products %>
