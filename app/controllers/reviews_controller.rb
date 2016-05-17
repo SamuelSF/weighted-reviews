@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 
-    before_action :authenticate_user!, only: [ "new", "create" ]
+    before_action :authenticate_user!, only: [ "new", "create", "edit", "update" ]
     def new
         @product = Product.find(params[:product_id])
         render 'new'
@@ -19,6 +19,20 @@ class ReviewsController < ApplicationController
     def show
         @review = Review.find(params[:id])
         render 'show'
+    end
+
+    def edit
+        @review = Review.find(params[:id])
+        render 'edit'
+    end
+
+    def update
+        @review = Review.find(params[:id])
+        unless current_user.id != @review.user_id
+            @review.update(review_params)
+            @review.new_review_sequence
+        end
+        redirect_to "/reviews/<%= @review.id %>"
     end
 
     private

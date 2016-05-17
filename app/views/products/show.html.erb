@@ -24,6 +24,8 @@ Platforms:
     <a href="/products/<%= @product.id %>/reviews/new">
         <h4>Write a Review!</h4>
     </a>
+<% else %>
+    <a href="/reviews/<%= @product.reviews.find_by(user_id: current_user.id).id%>"><h4>See your review!</h4></a>
 <% end %>
 
 <h3 class= "text-center"> Reviews </h3>

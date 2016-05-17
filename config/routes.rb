@@ -21,9 +21,17 @@ Rails.application.routes.draw do
 
   get '/reviews/:id', to: 'reviews#show'
 
-  get '/reviews/:id/user_ratings/new', to: 'user_ratings#new'
+  get '/reviews/:id/edit', to: 'reviews#edit'
 
-  post '/reviews/:id/user_ratings', to: 'user_ratings#create'
+  post '/reviews/:id', to: 'reviews#update'
+
+  get '/reviews/:review_id/user_ratings/new', to: 'user_ratings#new'
+
+  post '/reviews/:review_id/user_ratings', to: 'user_ratings#create'
+
+  # get '/user_ratings/:id/edit', to: 'user_ratings#edit'
+
+  # post 'user_ratings/:id/', to: 'user_ratings#update'
 
   get '/search', to: 'searches#main'
 

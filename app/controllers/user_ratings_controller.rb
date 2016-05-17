@@ -4,7 +4,7 @@ class UserRatingsController < ApplicationController
 
     # route is POST -> /reviews/:id/user_ratings
     def create
-        review = Review.find(params[:id])
+        review = Review.find(params[:review_id])
         new_user_rating = review.user_ratings.new(user_rating_params)
         new_user_rating.user = current_user
         if new_user_rating.save
@@ -16,7 +16,7 @@ class UserRatingsController < ApplicationController
     end
 
     def new
-        @review = Review.find(params[:id])
+        @review = Review.find(params[:review_id])
         render 'new'
     end
 

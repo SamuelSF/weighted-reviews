@@ -1,4 +1,4 @@
-<h3 class="text-center"><%= @review.title%></h3>
+<h3 class="text-center"><%= @review.title %></h3>
 <h4 class="text-center">
     Review of <%= @review.product.title %> by <%= @review.user.username%>.
 </h2>
@@ -13,11 +13,17 @@
 
 <h4> Score: <%= @review.review_score %></h4>
 
-<span>
+<div>
     <a href="/products/<%= @review.product_id %>">
         More <%=@review.product.title%> Reviews
     </a>
-</span>
+</div>
+
+<% if user_signed_in? && current_user.id == @review.user_id%>
+    <div>
+        <a href="/reviews/<%= @review.id %>/edit">Edit Your Review</a>
+    </div>
+<% end %>
 
 <h4 class="text-center">User Ratings</h4>
 
