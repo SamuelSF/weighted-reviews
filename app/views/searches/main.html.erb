@@ -1,12 +1,16 @@
-<form action="/search" method="gets">
-    <div class="form-group">
-        <label for="search-bar">Game Search</label>
-        <input type="text" name="query" class="form-control" id="search-bar" placeholder="Title">
+<div class="row">
+    <div class="col-sm-12">
+        <form action="/search" method="gets">
+            <div class="form-group">
+                <label for="search-bar">Game Search</label>
+                <input type="text" name="query" class="form-control" id="search-bar" placeholder="Title">
+            </div>
+            <div class="form-group">
+            <button class="btn btn-default">Submit</button>
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-    <button class="btn btn-default">Submit</button>
-    </div>
-</form>
+</div>
 
 <%if @products != nil && @products.length > 0 %>
     <% @products.each do |product| %>
@@ -19,5 +23,9 @@
         </div>
     <% end %>
 <% elsif @products %>
-    <strong>Sorry.  No Games Match your search query.</strong>
+    <div class="row">
+        <div class="col-sm-12">
+            <strong class="text-center">Sorry. No Games Match your search query.</strong>
+        </div>
+    </div>
 <% end %>
