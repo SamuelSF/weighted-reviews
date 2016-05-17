@@ -3,6 +3,14 @@ Rails.application.routes.draw do
 
   root 'site#index'
 
+  get '/users', to: 'users#index'
+
+  get '/users/:id', to: 'users#show'
+
+  # get '/users/:id/ratings' 'users#ratings'
+
+  # get '/users/:id/reviews' 'users#reviews'
+
   get '/products', to: 'products#index'
 
   get '/products/:id', to: 'products#show'

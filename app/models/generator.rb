@@ -53,4 +53,19 @@ class Generator
             end
         end
     end
+
+    def self.rebalance
+        Review.all.each do |review|
+            review.tally_ratings
+            review.compute_review_weight
+        end
+        User.all.each do |user|
+            user.tally_reviews
+            user.compute_user_weight
+        end
+        Product.all.each do |product|
+            product.tally_reviews
+            product.compute_product_score
+        end
+    end
 end

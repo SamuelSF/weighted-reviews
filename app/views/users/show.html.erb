@@ -1,0 +1,9 @@
+<h3 class="text-center"><%= @user.username %></h3>
+
+<% if current_user == @user %>
+    <a href="/users/edit"> Edit your Information </a>
+<% end %>
+<br>
+<a href="">See Reviews by this user.</a>
+<br>
+<a href"">See Ratings by this user.</a>

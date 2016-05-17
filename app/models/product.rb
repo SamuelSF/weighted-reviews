@@ -13,6 +13,8 @@ class Product < ActiveRecord::Base
             end
             new_product_score = review_sum / sum_of_user_weights
             self.update(product_score: new_product_score)
+        else
+            self.update(product_score: nil)
         end
     end
 

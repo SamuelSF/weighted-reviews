@@ -24,6 +24,8 @@ class Review < ActiveRecord::Base
 
             new_weight = average_rating * (Math.log(ratings.length) + 1)
             self.update(weight: new_weight)
+        else
+            self.update(weight: 5.0)
         end
     end
 
@@ -38,5 +40,23 @@ class Review < ActiveRecord::Base
 
     def tally_ratings
         self.update(rating_num: self.user_ratings.length)
+    end
+
+    def delete_review_sequence
+        reviewed_product = self.product
+        reviewer = self.user
+        user_ratings = self.user_ratings
+        user_ratings.destroy_all
+        self.destroy
+        puts "I done dit it now!"
+        reviewed_product = Product.find(reviewed_product.id)
+        reviewer = User.find(reviewer.id)
+        reviewer.tally_reviews
+        reviewer.compute_user_weight
+        reviewed_product.tally_reviews
+        reviewed_product.compute_product_score
+        reviewer.products.each do |product|
+            product.compute_product_score
+        end
     end
 end

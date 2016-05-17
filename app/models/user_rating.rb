@@ -25,4 +25,18 @@ class UserRating < ActiveRecord::Base
             product.compute_product_score
         end
     end
+
+    def delete_rating_sequence
+        review = self.review
+        user = review.user
+        self.destroy
+        review = Review.find(review.id)
+        user = User.find(user.id)
+        review.tally_ratings
+        review.compute_review_weight
+        user.compute_user_weight
+        user.products.each do |product|
+            product.compute_product_score
+        end
+    end
 end
