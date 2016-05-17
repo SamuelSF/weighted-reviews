@@ -31,12 +31,18 @@ class User < ActiveRecord::Base
 
     def delete_user_sequence
       reviewed_products = self.products
+      puts reviewed_products
       authored_reviews = self.reviews
+      puts authored_reviews
       user_ratings = self.user_ratings
+      puts "-----------------------------USER RATINGS #{user_ratings.length}"
       user_ratings.each do |user_rating|
         affected_user = user_rating.review.user
+        puts affected_user
         affected_review = user_rating.review
+        puts affected_review
         affected_products = affected_user.products
+        puts affected_products
         user_rating.destroy
         affected_review = Review.find(affected_review.id)
         affected_review.tally_ratings
@@ -48,16 +54,17 @@ class User < ActiveRecord::Base
           affected_product.compute_product_score
         end
       end
+      puts "----------------------------AUTHORED REVIEWS #{authored_reviews.length}"
       authored_reviews.each do |authored_review|
         authored_review.user_ratings.destroy_all
         authored_review.destroy
       end
       reviewed_products = reviewed_products.map {|product| Product.find(product.id)}
+      puts "---------------------------REVIEWED PRODUCTS #{reviewed_products.length}"
       reviewed_products.each do |reviewed_product|
         reviewed_product.tally_reviews
-        puts "Computing score for #{reviewed_product.title}"
+        puts "---------Computing score for #{reviewed_product.title}"
         reviewed_product.compute_product_score
       end
-      self.destroy
     end
 end

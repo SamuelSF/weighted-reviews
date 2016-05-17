@@ -1,4 +1,12 @@
 class RegistrationsController < Devise::RegistrationsController
+
+    def destroy
+        if resource.class == User
+            resource.delete_user_sequence
+        end
+        super
+    end
+
     private
 
     def sign_up_params

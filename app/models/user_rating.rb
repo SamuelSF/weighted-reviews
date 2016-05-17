@@ -28,7 +28,9 @@ class UserRating < ActiveRecord::Base
 
     def delete_rating_sequence
         review = self.review
+        puts review
         user = review.user
+        puts user
         self.destroy
         review = Review.find(review.id)
         user = User.find(user.id)

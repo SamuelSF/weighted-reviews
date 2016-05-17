@@ -44,7 +44,9 @@ class Review < ActiveRecord::Base
 
     def delete_review_sequence
         reviewed_product = self.product
+        puts reviewed_product
         reviewer = self.user
+        puts reviewer
         user_ratings = self.user_ratings
         user_ratings.destroy_all
         self.destroy
