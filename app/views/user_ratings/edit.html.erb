@@ -20,6 +20,11 @@
     </div>
     <input type="hidden" name="authenticity_token"value="<%= form_authenticity_token %>">
     <div class="form-group">
-        <button class="btn btn-default" type="submit">Submit</button>
+        <button class="btn btn-default" type="submit">Save Changes</button>
     </div>
 </form>
+
+<div class="form-group">
+    <label for="delete-button">Deletion is irreversible, make sure you this is what you want!</label>
+    <a href="/user_ratings/<%= @user_rating.id %>" class="btn btn-default form-control" data-method="delete" id="delete-button">Delete Rating</a>
+</div>

@@ -33,7 +33,9 @@ Rails.application.routes.draw do
 
   get '/user_ratings/:id/edit', to: 'user_ratings#edit'
 
-  post 'user_ratings/:id/', to: 'user_ratings#update'
+  post 'user_ratings/:id', to: 'user_ratings#update'
+
+  delete '/user_ratings/:id', to: 'user_ratings#delete'
 
   get '/search', to: 'searches#main'
 

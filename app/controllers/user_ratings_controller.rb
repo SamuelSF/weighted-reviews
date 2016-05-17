@@ -1,6 +1,6 @@
 class UserRatingsController < ApplicationController
 
-    before_action :authenticate_user!, only: ["new", "create", "edit", "update"]
+    before_action :authenticate_user!, only: ["new", "create", "edit", "update", "delete"]
 
     # route is POST -> /reviews/:id/user_ratings
     def create
@@ -30,6 +30,14 @@ class UserRatingsController < ApplicationController
         unless current_user.id != @user_rating.user_id
             @user_rating.update(user_rating_params)
             @user_rating.new_rating_sequence
+        end
+        redirect_to "/reviews/#{@user_rating.review_id}"
+    end
+
+    def delete
+        @user_rating = UserRating.find(params[:id])
+        unless current_user.id != @user_rating.user_id
+            @user_rating.delete_rating_sequence
         end
         redirect_to "/reviews/#{@user_rating.review_id}"
     end
