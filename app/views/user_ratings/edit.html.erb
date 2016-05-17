@@ -1,0 +1,25 @@
+<h3>
+    Edit Your Rating of The <a href="/reviews/<%= @user_rating.review.id %>">Review</a> of
+    <a href="/products/<%= @user_rating.review.product_id %>"><%= @user_rating.review.product.title%> </a>
+    by <%= @user_rating.review.user.username %>
+</h3>
+
+<form action="/user_ratings/<%= @user_rating.id %>" method="post">
+    <div class="form-group">
+        <label for="user_rating_body">Comments</label>
+        <textarea  class="form-control" rows="4" name="user_rating[body]" id="user_rating_score"><%= @user_rating.body %>
+        </textarea>
+    </div>
+    <div class="form-group">
+        <label for="user_rating_score">Rate the Review</label>
+            <select name="user_rating[rating_score]" id="user_rating_score">
+                <% (1..10).each do |num| %>
+                    <option value ="<%= num %>"><%= num %></option>
+                <% end %>
+            </select>
+    </div>
+    <input type="hidden" name="authenticity_token"value="<%= form_authenticity_token %>">
+    <div class="form-group">
+        <button class="btn btn-default" type="submit">Submit</button>
+    </div>
+</form>

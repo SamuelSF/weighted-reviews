@@ -29,9 +29,9 @@ Rails.application.routes.draw do
 
   post '/reviews/:review_id/user_ratings', to: 'user_ratings#create'
 
-  # get '/user_ratings/:id/edit', to: 'user_ratings#edit'
+  get '/user_ratings/:id/edit', to: 'user_ratings#edit'
 
-  # post 'user_ratings/:id/', to: 'user_ratings#update'
+  post 'user_ratings/:id/', to: 'user_ratings#update'
 
   get '/search', to: 'searches#main'
 

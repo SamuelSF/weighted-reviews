@@ -1,6 +1,6 @@
 class UserRatingsController < ApplicationController
 
-    before_action :authenticate_user!, only: ["new", "create"]
+    before_action :authenticate_user!, only: ["new", "create", "edit", "update"]
 
     # route is POST -> /reviews/:id/user_ratings
     def create
@@ -20,6 +20,19 @@ class UserRatingsController < ApplicationController
         render 'new'
     end
 
+    def edit
+        @user_rating = UserRating.find(params[:id])
+        render 'edit'
+    end
+
+    def update
+        @user_rating = UserRating.find(params[:id])
+        unless current_user.id != @user_rating.user_id
+            @user_rating.update(user_rating_params)
+            @user_rating.new_rating_sequence
+        end
+        redirect_to "/reviews/#{@user_rating.review_id}"
+    end
     private
         def user_rating_params
             params.require(:user_rating).permit(:body, :rating_score)

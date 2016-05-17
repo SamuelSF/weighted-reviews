@@ -27,10 +27,16 @@
 
 <h4 class="text-center">User Ratings</h4>
 
-<% unless user_signed_in? && current_user.id == @review.user_id %>
-    <p>
+<% unless user_signed_in? && (current_user.id == @review.user_id || @review.user_ratings.find_by(user_id: current_user.id) != nil)%>
+    <div>
         <a href="/reviews/<%= @review.id %>/user_ratings/new">Rate This Review</a>
-    </p>
+    </div>
+<% end %>
+
+<% if user_signed_in? && @review.user_ratings.find_by(user_id: current_user.id) != nil %>
+    <div>
+        <a href="/user_ratings/<%= @review.user_ratings.find_by(user_id: current_user.id).id%>/edit">Edit Your Rating of This Review</a>
+    </div>
 <% end %>
 
 <dl>
