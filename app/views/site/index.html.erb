@@ -1,19 +1,82 @@
-<div>
-    <h3 class="text-center">Welcom to You Rate It</h3>
+<h2 class="page-header text-center">Most Commonly Reviewed Games</h2>
 
-    <h4 class="text-center">What It Is</h4>
-    <p class="text-justify">
-        You rate it is a web site that permits users to review products and rate the reviews that other users have made.
-    </p>
-    <h4 class="text-center">How it works</h4>
-    <p class="text-justify">
-        Whenever a user rates another user's review of a product that rating affects how influential the author of the review is.  More influential users have a greater effect on a product's score.
-    </p>
-    <h4 class="text-center">Why It Was Made.</h4>
-    <p class="text-justify">
-        You Rate It was made to serve as a democratized metacritic.  Review websites often earn income from ads that run on the website.  Often times these ads are for products that are reviewed on that very website.  This creates a conflict of interests as reviewers may be tempted to review a product more favorably than it deserves to appease the hand that feeds, i.e., the advertisers.
-    </p>
-    <p class="text-justify">
-        By allowing users to rate the reviews of other users, reviewers of a high quality become more influential and the average user review score is as representative of a products quality as professional reviews, but without the aforementioned conflict of interest.
-    </p>
-</div>
+<% if @products.length >= 6 %>
+<div class="row top">
+    <div class="col-sm-6">
+        <a href="/products/<%= @products[0].id%>">
+            <h3 class="text-center"><%= @products[0].title %></h3>
+            <img src="<%= @products[0].med_img %>" class="img-responsive center-block">
+        </a>
+    </div>
+    <div class="col-sm-6">
+        <a href="/products/<%= @products[1].id%>">
+            <h3 class="text-center"><%= @products[1].title %></h3>
+            <img src="<%= @products[1].med_img %>" class="img-responsive center-block">
+        </a>
+    </div>
+</div> <!-- top row -->
+<div class="row top-text">
+    <div class="col-sm-6">
+        <% if @products[0].product_score %>
+                <h3 class="text-center outline-element"><%= @products[0].product_score.round(1) %></h3>
+        <% end %>
+    </div>
+    <div class="col-sm-6">
+        <% if @products[1].product_score %>
+                <h3 class="text-center outline-element"><%= @products[1].product_score.round(1) %></h3>
+        <% end %>
+    </div>
+</div><!-- top text row -->
+<div class="row mid">
+    <div class="col-sm-6">
+        <a href="/products/<%= @products[2].id%>">
+            <h3 class="text-center"><%= @products[2].title %></h3>
+            <img src="<%= @products[2].med_img %>" class="img-responsive center-block">
+        </a>
+    </div>
+    <div class="col-sm-6">
+        <a href="/products/<%= @products[3].id%>">
+            <h3 class="text-center"><%= @products[3].title %></h3>
+            <img src="<%= @products[3].med_img %>" class="img-responsive center-block">
+        </a>
+    </div>
+</div> <!-- mid row -->
+<div class="row mid-text">
+    <div class="col-sm-6">
+        <% if @products[2].product_score %>
+                <h3 class="text-center outline-element"><%= @products[2].product_score.round(1) %></h3>
+        <% end %>
+    </div>
+    <div class="col-sm-6">
+        <% if @products[3].product_score %>
+                <h3 class="text-center outline-element"><%= @products[3].product_score.round(1) %></h3>
+        <% end %>
+    </div>
+</div><!-- mid text row -->
+<div class="row bottom">
+    <div class="col-sm-6">
+        <a href="/products/<%= @products[4].id%>">
+            <h3 class="text-center"><%= @products[4].title %></h3>
+            <img src="<%= @products[4].med_img %>" class="img-responsive center-block">
+        </a>
+    </div>
+    <div class="col-sm-6">
+        <a href="/products/<%= @products[5].id%>">
+            <h3 class="text-center"><%= @products[5].title %></h3>
+            <img src="<%= @products[5].med_img %>" class="img-responsive center-block">
+        </a>
+    </div>
+</div><!-- row bottom -->
+<div class="row bottom-text-row">
+    <div class="col-sm-6">
+        <% if @products[4].product_score %>
+            <h3 class="text-center outline-element"><%= @products[4].product_score.round(1) %></h3>
+        <% end %>
+    </div>
+    <div class="col-sm-6">
+        <% if @products[5].product_score %>
+            <h3 class="text-center outline-element"><%= @products[5].product_score.round(1) %></h3>
+        <% end %>
+    </div>
+</div> <!-- bottom text row -->
+<% end %>

@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root 'site#index'
 
+  get '/about', to: 'site#about'
+
   get '/users', to: 'users#index'
 
   get '/users/:id', to: 'users#show'

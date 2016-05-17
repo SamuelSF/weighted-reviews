@@ -9,16 +9,16 @@
 
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <header class="row top-row outline-element">
         <h1 class="text-center">You Rate It!</h1>
     </header>
 
     <div class="row main-row">
-        <div class="col-sm-7 col-sm-offset-2">
+        <div class="col-sm-8 col-sm-offset-2">
             <%= yield %>
         </div> <!-- main content column -->
-        <div class="col-sm-3 nav-column">
+        <div class="col-sm-2 nav-column">
             <% if user_signed_in? %>
                 <div class="list-group-item user-welcome">
                     Welcome <%= current_user.username %>
@@ -36,12 +36,10 @@
                     <a href="/" class="list-group-item"> Home </a>
                     <a href="/users" class="list-group-item"> Users </a>
                     <a href="/search" class="list-group-item"> Search </a>
+                    <a href="/about" class="list-group-item">About</a>
             </div>
         </div> <!-- nav-column -->
     </div><!-- main content row -->
-    <footer class="row outline-element">
-        <adress class="pull-right reach-me">Website by <a href="mailto:SamuelSFrade@gmail.com">Samuel Frade</a></address>
-    </footer>
 </div> <!-- main container -->
 </body>
 </html>
