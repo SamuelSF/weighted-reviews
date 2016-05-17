@@ -24,6 +24,8 @@
 </form>
 
 <div class="form-group">
-    <label for="delete-button">Deletion is irreversible, make sure you this is what you want!</label>
+    <label for="delete-button" class="text-warning">
+        Deletion is irreversible, make sure you this is what you want!
+    </label>
     <a href="/reviews/<%= @review.id %>" class="btn btn-default form-control" data-method="delete" id="delete-button">Delete Review</a>
 </div>
