@@ -3,7 +3,6 @@ class Product < ActiveRecord::Base
     has_many :users, through: :reviews
 
     def compute_product_score
-        puts "Computing score for #{self.title}"
         reviews = self.reviews
         if reviews.length > 0
             sum_of_user_weights = 0

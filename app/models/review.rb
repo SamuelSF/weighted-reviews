@@ -32,12 +32,11 @@ class Review < ActiveRecord::Base
         self.product.tally_reviews
         self.user.compute_user_weight
         self.user.products.each do |product|
-            puts product.title
             product.compute_product_score
         end
     end
 
     def tally_ratings
-        self.update(rating_num: self.ratings.length)
+        self.update(rating_num: self.user_ratings.length)
     end
 end

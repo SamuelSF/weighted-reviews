@@ -7,11 +7,15 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #
-sam = User.create(username: "Sam", email: "Sam@host.com",
-    password: "swordfish", password_confirmation: "swordfish")
-
-bob = User.create(username: "Bob", email: "Bob@host.com",
-    password: "swordfish", password_confirmation: "swordfish")
-
-kristen = User.create(username: "Kristen", email: "Kristen@host.com",
-    password: "swordfish", password_confirmation: "swordfish")
+500.times do
+    name = Faker::Internet.user_name
+    email = Faker::Internet.email(name)
+    password = Faker::Internet.password
+    password_confirmation = password
+    fake_user = User.new
+    fake_user.username = name
+    fake_user.email = email
+    fake_user.password = password
+    fake_user.password_confirmation = password_confirmation
+    fake_user.save
+end
