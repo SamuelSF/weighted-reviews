@@ -1,82 +1,84 @@
-<h2 class="page-header text-center">Most Commonly Reviewed Games</h2>
 
+<div class="row">
+    <h2 class="page-header text-center">Most Commonly Reviewed Games</h2>
+</div>
 <% if @products.length >= 6 %>
-<div class="row top">
-    <div class="col-sm-6">
-        <a href="/products/<%= @products[0].id%>">
-            <h3 class="text-center"><%= @products[0].title %></h3>
-            <img src="<%= @products[0].med_img %>" class="img-responsive center-block">
-        </a>
-    </div>
-    <div class="col-sm-6">
-        <a href="/products/<%= @products[1].id%>">
-            <h3 class="text-center"><%= @products[1].title %></h3>
-            <img src="<%= @products[1].med_img %>" class="img-responsive center-block">
-        </a>
-    </div>
-</div> <!-- top row -->
-<div class="row top-text">
-    <div class="col-sm-6">
-        <% if @products[0].product_score %>
-                <h3 class="text-center outline-element"><%= @products[0].product_score.round(1) %></h3>
-        <% end %>
-    </div>
-    <div class="col-sm-6">
-        <% if @products[1].product_score %>
-                <h3 class="text-center outline-element"><%= @products[1].product_score.round(1) %></h3>
-        <% end %>
-    </div>
-</div><!-- top text row -->
-<div class="row mid">
-    <div class="col-sm-6">
-        <a href="/products/<%= @products[2].id%>">
-            <h3 class="text-center"><%= @products[2].title %></h3>
-            <img src="<%= @products[2].med_img %>" class="img-responsive center-block">
-        </a>
-    </div>
-    <div class="col-sm-6">
-        <a href="/products/<%= @products[3].id%>">
-            <h3 class="text-center"><%= @products[3].title %></h3>
-            <img src="<%= @products[3].med_img %>" class="img-responsive center-block">
-        </a>
-    </div>
-</div> <!-- mid row -->
-<div class="row mid-text">
-    <div class="col-sm-6">
-        <% if @products[2].product_score %>
-                <h3 class="text-center outline-element"><%= @products[2].product_score.round(1) %></h3>
-        <% end %>
-    </div>
-    <div class="col-sm-6">
-        <% if @products[3].product_score %>
-                <h3 class="text-center outline-element"><%= @products[3].product_score.round(1) %></h3>
-        <% end %>
-    </div>
-</div><!-- mid text row -->
-<div class="row bottom">
-    <div class="col-sm-6">
-        <a href="/products/<%= @products[4].id%>">
-            <h3 class="text-center"><%= @products[4].title %></h3>
-            <img src="<%= @products[4].med_img %>" class="img-responsive center-block">
-        </a>
-    </div>
-    <div class="col-sm-6">
-        <a href="/products/<%= @products[5].id%>">
-            <h3 class="text-center"><%= @products[5].title %></h3>
-            <img src="<%= @products[5].med_img %>" class="img-responsive center-block">
-        </a>
-    </div>
-</div><!-- row bottom -->
-<div class="row bottom-text-row">
-    <div class="col-sm-6">
-        <% if @products[4].product_score %>
-            <h3 class="text-center outline-element"><%= @products[4].product_score.round(1) %></h3>
-        <% end %>
-    </div>
-    <div class="col-sm-6">
-        <% if @products[5].product_score %>
-            <h3 class="text-center outline-element"><%= @products[5].product_score.round(1) %></h3>
-        <% end %>
-    </div>
-</div> <!-- bottom text row -->
+    <div class="row top">
+        <div class="col-sm-6">
+            <a href="/products/<%= @products[0].id%>">
+                <h3 class="text-center"><%= @products[0].title %></h3>
+                <img src="<%= @products[0].med_img %>" class="img-responsive center-block">
+            </a>
+        </div>
+        <div class="col-sm-6">
+            <a href="/products/<%= @products[1].id%>">
+                <h3 class="text-center"><%= @products[1].title %></h3>
+                <img src="<%= @products[1].med_img %>" class="img-responsive center-block">
+            </a>
+        </div>
+    </div> <!-- top row -->
+    <div class="row top-text">
+        <div class="col-sm-6">
+            <% if @products[0].product_score %>
+                    <h3 class="text-center outline-element"><%= @products[0].product_score.round(1) %></h3>
+            <% end %>
+        </div>
+        <div class="col-sm-6">
+            <% if @products[1].product_score %>
+                    <h3 class="text-center outline-element"><%= @products[1].product_score.round(1) %></h3>
+            <% end %>
+        </div>
+    </div><!-- top text row -->
+    <div class="row mid">
+        <div class="col-sm-6">
+            <a href="/products/<%= @products[2].id%>">
+                <h3 class="text-center"><%= @products[2].title %></h3>
+                <img src="<%= @products[2].med_img %>" class="img-responsive center-block">
+            </a>
+        </div>
+        <div class="col-sm-6">
+            <a href="/products/<%= @products[3].id%>">
+                <h3 class="text-center"><%= @products[3].title %></h3>
+                <img src="<%= @products[3].med_img %>" class="img-responsive center-block">
+            </a>
+        </div>
+    </div> <!-- mid row -->
+    <div class="row mid-text">
+        <div class="col-sm-6">
+            <% if @products[2].product_score %>
+                    <h3 class="text-center outline-element"><%= @products[2].product_score.round(1) %></h3>
+            <% end %>
+        </div>
+        <div class="col-sm-6">
+            <% if @products[3].product_score %>
+                    <h3 class="text-center outline-element"><%= @products[3].product_score.round(1) %></h3>
+            <% end %>
+        </div>
+    </div><!-- mid text row -->
+    <div class="row bottom">
+        <div class="col-sm-6">
+            <a href="/products/<%= @products[4].id%>">
+                <h3 class="text-center"><%= @products[4].title %></h3>
+                <img src="<%= @products[4].med_img %>" class="img-responsive center-block">
+            </a>
+        </div>
+        <div class="col-sm-6">
+            <a href="/products/<%= @products[5].id%>">
+                <h3 class="text-center"><%= @products[5].title %></h3>
+                <img src="<%= @products[5].med_img %>" class="img-responsive center-block">
+            </a>
+        </div>
+    </div><!-- row bottom -->
+    <div class="row bottom-text-row">
+        <div class="col-sm-6">
+            <% if @products[4].product_score %>
+                <h3 class="text-center outline-element"><%= @products[4].product_score.round(1) %></h3>
+            <% end %>
+        </div>
+        <div class="col-sm-6">
+            <% if @products[5].product_score %>
+                <h3 class="text-center outline-element"><%= @products[5].product_score.round(1) %></h3>
+            <% end %>
+        </div>
+    </div> <!-- bottom text row -->
 <% end %>

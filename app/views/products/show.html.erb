@@ -1,11 +1,13 @@
-<h3 class="text-center"><%= @product.title %>
-    <% if @product.product_score %>
-        - <%= @product.product_score.round(1) %>
-    <% end %>
-</h3>
+<h2 class="text-center page-header"><%= @product.title %></h2>
 
-
-<img src="<%= @product.med_img %>" class="game-image">
+<div class="row faux-row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <img src="<%= @product.med_img %>" class="img-responsive center-block">
+        <% if @product.product_score %>
+            <h4 class="text-center outline-element"><%= @product.product_score.round(1) %></h4>
+        <% end %>
+    </div>
+</div>
 <p>
     <%= @product.description %>
 </p>
@@ -17,24 +19,51 @@ Platforms:
     <% @product.platforms.split(",").each do |platform|%>
         <li><%= platform %></li>
     <% end %>
-
 </ul>
+
+<div class="row faux-row">
+    <div class="col-sm-12">
+        <em><%= @product.reviews.length %> User Reviews</em>
+    </div>
+</div>
 
 <% unless user_signed_in? && @product.users.include?(current_user) %>
     <a href="/products/<%= @product.id %>/reviews/new">
-        <h4>Write a Review!</h4>
+        <h3>Write a Review!</h3>
     </a>
 <% else %>
-    <a href="/reviews/<%= @product.reviews.find_by(user_id: current_user.id).id%>"><h4>See your review!</h4></a>
+    <a href="/reviews/<%= @product.reviews.find_by(user_id: current_user.id).id%>"><h3>See your review!</h3></a>
 <% end %>
 
-<h3 class= "text-center"> Reviews </h3>
+<% if @reviews.length > 0 %>
+<div class="row faux-row">
+    <div class="col-sm-12">
+        <h2 class="text-center"> Reviews </h2>
+    </div>
+</div>
 
-<ul class="list-unstyled">
-<% @reviews.each do |review| %>
-    <li>
-        <a href="/reviews/<%=review.id%>"><%= review.title %></a>
-        by <%= review.user.username%> - Score: <%=review.review_score%>
-    </li>
+<div class="row faux-row">
+    <div class="col-sm-12">
+        <h4 class="text-center"><%= will_paginate @reviews %></h4>
+    </div>
+</div>
+
+    <% @reviews.each do |review| %>
+        <div class="review-element row faux-row">
+            <div class="col-sm-12">
+                <span class="outline-element"> Score: <%= review.review_score %> </span>
+                <a href="/reviews/<%=review.id%>"><%= review.title %></a><br>
+                <small>
+                    by <a href="/users/<%= review.user.id %>"><%= review.user.username%></a>
+                    on <%= review.created_at.strftime("%B %-d, %Y") %>
+                </small>
+            </div>
+        </div>
+    <% end %>
 <% end %>
-</ul>
+
+<div class="row faux-row">
+    <div class="col-sm-12">
+        <h4 class="text-center"><%= will_paginate @reviews %></h4>
+    </div>
+</div>

@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+#gem for pagination
+gem 'will_paginate', '~> 3.0.6'
+
 #generate random content for my database
 gem 'faker'
 

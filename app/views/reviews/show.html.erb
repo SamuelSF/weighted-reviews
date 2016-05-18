@@ -1,6 +1,8 @@
-<h3 class="text-center"><%= @review.title %></h3>
-<h4 class="text-center">
-    Review of <%= @review.product.title %> by <%= @review.user.username%>.
+<h2 class="text-center"><%= @review.title %><br>
+    <small>Review of <a href="/products<%= @review.product_id %>"><%= @review.product.title %></a>
+        by <a href="/users/<%= @review.user_id %>"><%= @review.user.username %></a>
+        on <%= @review.created_at.strftime("%B %-d, %Y") %>
+    </small>
 </h2>
 
 <article class="text-justify">
@@ -11,43 +13,58 @@
     <% end %>
 </article>
 
-<h4> Score: <%= @review.review_score %></h4>
+<span class="review-element outline-element faux-row"> Score: <%= @review.review_score %> </span>
 
 <div>
     <a href="/products/<%= @review.product_id %>">
-        More <%=@review.product.title%> Reviews
+        <span class="review-element faux-row"> More <%=@review.product.title%> Reviews </span>
     </a>
 </div>
 
 <% if user_signed_in? && current_user.id == @review.user_id%>
     <div>
-        <a href="/reviews/<%= @review.id %>/edit">Edit Your Review</a>
+        <a href="/reviews/<%= @review.id %>/edit" class="review-element faux-row">Edit Your Review</a>
     </div>
 <% end %>
-
-<h4 class="text-center">User Ratings</h4>
 
 <% unless user_signed_in? && (current_user.id == @review.user_id || @review.user_ratings.find_by(user_id: current_user.id) != nil)%>
     <div>
-        <a href="/reviews/<%= @review.id %>/user_ratings/new">Rate This Review</a>
+        <a href="/reviews/<%= @review.id %>/user_ratings/new" class="review-element faux-row">Rate This Review</a>
     </div>
 <% end %>
+
+<% if @user_ratings.length > 0 %>
+    <h3 class="text-center">User Ratings</h3>
+<% end %>
+
 
 <% if user_signed_in? && @review.user_ratings.find_by(user_id: current_user.id) != nil %>
     <div>
-        <a href="/user_ratings/<%= @review.user_ratings.find_by(user_id: current_user.id).id%>/edit">Edit Your Rating of This Review</a>
+        <a href="/user_ratings/<%= @review.user_ratings.find_by(user_id: current_user.id).id%>/edit"
+            class="review-element faux-row">
+            Edit Your Rating of This Review</a>
     </div>
 <% end %>
 
-<dl>
-    <% @review.user_ratings.each do |rating| %>
-        <dt><%= rating.user.username %> - <%=rating.rating_score%></dt>
-        <dd>
+<h4 class="text-center">
+    <%= will_paginate @user_ratings %>
+</h4>
+
+<% @user_ratings.each do |rating| %>
+    <div class="faux-row">
+        <div class="text-justify">
             <% rating_lines = rating.body.split("\n") %>
             <% rating_lines.each do |line| %>
                 <%= line %>
                 <br>
             <% end %>
-        </dd>
-    <% end %>
-</dl>
+        </div>
+        <span class="outline-element">Rating: <%= rating.rating_score %></span>
+        by <a href="/users/<%= rating.user_id %>"><%= rating.user.username %> </a>
+        on <%= rating.created_at.strftime("%B %-d, %Y") %>
+    </div>
+<% end %>
+
+<h4 class="text-center">
+    <%= will_paginate @user_ratings %>
+</h4>

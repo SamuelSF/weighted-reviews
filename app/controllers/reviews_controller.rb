@@ -18,6 +18,7 @@ class ReviewsController < ApplicationController
 
     def show
         @review = Review.find(params[:id])
+        @user_ratings = @review.user_ratings.paginate(:page => params[:page], :per_page => 20)
         render 'show'
     end
 
