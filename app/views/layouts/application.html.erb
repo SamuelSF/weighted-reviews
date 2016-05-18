@@ -19,11 +19,6 @@
             <%= yield %>
         </div> <!-- main content column -->
         <div class="col-sm-2 nav-column">
-            <% if user_signed_in? %>
-                <div class="list-group-item user-welcome">
-                    Welcome <%= current_user.username %>
-                </div>
-            <% end %>
             <div class="list-group">
                 <% unless user_signed_in? %>
                     <a href="/users/sign_up/" class="list-group-item">Sign Up</a>
@@ -38,6 +33,11 @@
                     <a href="/search" class="list-group-item"> Search </a>
                     <a href="/about" class="list-group-item">About</a>
             </div>
+            <% if user_signed_in? %>
+                <div class="list-group-item user-welcome">
+                    Welcome <%= current_user.username %>
+                </div>
+            <% end %>
         </div> <!-- nav-column -->
     </div><!-- main content row -->
 </div> <!-- main container -->
