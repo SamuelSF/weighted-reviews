@@ -1,9 +1,10 @@
 <h3 class="text-center">Users</h3>
 
-<ul class="list-unstyled">
-    <% @users.each do |user| %>
-        <li>
-            <a href="/users/<%= user.id%>"><%= user.username %></a>
-        </li>
-    <% end %>
-</ul>
+<% @users.each do |user| %>
+    <div class="row faux-row">
+        <div class="col-sm-12">
+            <a href="/users/<%= user.id%>" class="review-element"><%= user.username %></a><br>
+            <small> Has written <%= user.reviews.length %> reviews, and given <%= user.user_ratings.length %> user ratings.</small>
+        </div>
+    </div>
+<% end %>
