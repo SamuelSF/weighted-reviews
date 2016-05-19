@@ -1,0 +1,28 @@
+<h2 class="text-center page-header"> Reviews Rated By
+    <a href="/users/<%= @user.id %>"><%= @user.username %></a>
+</h2>
+
+<div class="row faux-row">
+    <div class="col-sm-12">
+        <h4 class="text-center"><%= will_paginate @ratings %></h4>
+    </div>
+</div>
+
+<% @ratings.each do |rating| %>
+    <div class="row faux-row review-element">
+        <div class="col-sm-12">
+            <a href="/reviews/<%= rating.review_id %>">
+                Rated: <%= rating.review.title %>
+            </a><br>
+            <small>Review of <%= rating.review.product.title %> by
+                <a href="/users/<%= rating.review.user.id %>"><%= rating.review.user.username %></a>
+            </small>
+        </div>
+    </div>
+<% end %>
+
+<div class="row faux-row">
+    <div class="col-sm-12">
+        <h4 class="text-center"><%= will_paginate @ratings %></h4>
+    </div>
+</div>

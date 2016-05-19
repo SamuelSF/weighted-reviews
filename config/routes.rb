@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   get '/users/:id', to: 'users#show'
 
-  # get '/users/:id/ratings' 'users#ratings'
+  get '/users/:id/ratings', to: 'users#ratings'
 
-  # get '/users/:id/reviews' 'users#reviews'
+  get '/users/:id/reviews', to: 'users#reviews'
 
   get '/products', to: 'products#index'
 

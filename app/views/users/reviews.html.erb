@@ -1,0 +1,26 @@
+<h2 class="text-center page-header"> Reviews By
+    <a href="/users/<%= @user.id %>"><%= @user.username %></a>
+</h2>
+
+<div class="row faux-row">
+    <div class="col-sm-12">
+        <h4 class="text-center"><%= will_paginate @reviews %></h4>
+    </div>
+</div>
+
+<% @reviews.each do |review| %>
+    <div class="row faux-row review-element">
+        <div class="col-sm-12">
+            <a href="/reviews/<%= review.id %>">
+                <%= review.title %>
+            </a><br>
+            <small>Review of <%= review.product.title %></small>
+        </div>
+    </div>
+<% end %>
+
+<div class="row faux-row">
+    <div class="col-sm-12">
+        <h4 class="text-center"><%= will_paginate @reviews %></h4>
+    </div>
+</div>
