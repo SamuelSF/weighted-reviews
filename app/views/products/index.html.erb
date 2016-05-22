@@ -10,25 +10,7 @@
     </div>
 </div>
 
-<% @products.each do |product| %>
-    <div class="row faux-row">
-        <div class="col-sm-4">
-            <a href="/products/<%= product.id %>">
-                <img src="<%= product.med_img %>" class="img-responsive center-block">
-            </a>
-        </div>
-        <div class="col-sm-8">
-            <a href="/products/<%= product.id %>">
-                <h3 class="text-center"><%= product.title %></h3>
-            </a>
-            <p class="text-justify"><%= product.description%></p>
-            <% if product.product_score != nil %>
-                <em><%= product.review_num%> User Reviews</em>
-                <h4 class="text-center outline-element"><%= product.product_score.round(1) %></h4>
-            <% end %>
-        </div>
-    </div>
-<% end %>
+<%= render partial: "shared/product_list" %>
 
 <div class="row faux-row">
     <div class="col-sm-12">
