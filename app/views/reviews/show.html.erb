@@ -1,5 +1,5 @@
 <h2 class="text-center"><%= @review.title %><br>
-    <small>Review of <a href="/products<%= @review.product_id %>"><%= @review.product.title %></a>
+    <small>Review of <a href="/products/<%= @review.product_id %>"><%= @review.product.title %></a>
         by <a href="/users/<%= @review.user_id %>"><%= @review.user.username %></a>
         on <%= @review.created_at.strftime("%B %-d, %Y") %>
     </small>
